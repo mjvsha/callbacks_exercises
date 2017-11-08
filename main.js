@@ -178,7 +178,21 @@ console.log( 'The total number of sales is:', numSales );
 /*
   Calculate the total number of 'purchases'.
 */
-var numPurchases;
+
+function purchases() {
+  var counter = 0;
+  for (var i = 0; i < transactions.length; i++) {
+    if (transactions[i]['type'] === 'purchase')
+      counter +=1;
+  }
+    return counter;
+}
+
+
+var numPurchases = purchases();
+
+
+
 
 console.log( 'The total number of purchases is:', numPurchases );
 
