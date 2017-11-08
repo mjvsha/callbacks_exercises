@@ -128,8 +128,27 @@ console.log( 'The total number of transactions is:', totalTransactions );
 
   HINT(S):
   - Not all transactions are 'sales'.
+
 */
-var numSales;
+
+function sales() {
+
+    var counter = 0;
+
+    for (var i = 0; i < transactions.length; i++) {
+      if (transactions[i]['type'] === 'sale') {
+        counter +=1;
+    }
+  }
+    return counter;
+
+}
+var numSales = sales();
+
+//why does this way work? when i assign the fuction directly, i dont get the return value but the entire function itself
+
+
+
 
 /*
   Hey, welcome to the first question!
