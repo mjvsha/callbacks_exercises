@@ -422,10 +422,6 @@ var sumSales1 = transactions.filter(function(array){
 
 
 
-console.log('HOHOHOH')
-
-
-
 var sumTheSales = function(array){
   var salesPriceArray = [];
 
@@ -466,6 +462,18 @@ console.log( 'The sum of all sales is: $', sumTheSales(sumSales1));
   - Your solution to 'QUESTION 08' is a good starting point!
   - Make sure to include 'price' information from *all* purchases.
 */
+
+  var onlyPurchases = transactions.filter(function(array){
+    return (array.type === 'purchase')
+  });
+
+  onlyPurchases.forEach(function(element){
+
+    for (var i = 0; i < element['items'].length; i++) {
+      console.log(element['items'][i]['price'])
+    }
+    // console.log(element['items']);
+  });
 
 var sumPurchases;
 
