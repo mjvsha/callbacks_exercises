@@ -463,19 +463,34 @@ console.log( 'The sum of all sales is: $', sumTheSales(sumSales1));
   - Make sure to include 'price' information from *all* purchases.
 */
 
+//get the purchases from the transactins array
+
   var onlyPurchases = transactions.filter(function(array){
     return (array.type === 'purchase')
   });
 
+//create array to hold all the purchase prices
+  var purchasePriceArray = [];
+
+//iterate through the purchases array and push the prces into the purhase price array
+
+
   onlyPurchases.forEach(function(element){
 
     for (var i = 0; i < element['items'].length; i++) {
-      console.log(element['items'][i]['price'])
+      purchasePriceArray.push((element['items'][i]['price']));
     }
-    // console.log(element['items']);
   });
 
-var sumPurchases;
+console.log(purchasePriceArray);
+
+//sum all the purchases using the reduce method 
+
+var sumPurchases= purchasePriceArray.reduce(function(total, current, index){
+  console.log(total+= current);
+  // return total += current;
+  return total;
+})
 
 console.log( 'The sum of all purhcases is:', sumPurchases );
 
