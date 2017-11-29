@@ -478,21 +478,30 @@ console.log( 'The sum of all sales is: $', sumTheSales(sumSales1));
   onlyPurchases.forEach(function(element){
 
     for (var i = 0; i < element['items'].length; i++) {
-      purchasePriceArray.push((element['items'][i]['price']));
+      purchasePriceArray.push(element['items'][i]['price']);
     }
   });
 
 console.log(purchasePriceArray);
 
-//sum all the purchases using the reduce method 
+//sum all the purchases using the reduce method
 
-var sumPurchases= purchasePriceArray.reduce(function(total, current, index){
-  console.log(total+= current);
+var sumPurchases= purchasePriceArray.reduce(function(total, current){
+  //console.log('BEFORE:'+total+'c:'+current);
+  total += current;
+
+  console.log('after:'+total.toFixed(1));
   // return total += current;
   return total;
 })
+//
+// const sumPurchases= purchasePriceArray.reduce((total, current) =>total+current);
+// console.log(sumPurchases);
 
-console.log( 'The sum of all purhcases is:', sumPurchases );
+
+
+
+console.log( 'The sum of all purhcases is:', Math.round(sumPurchases) );
 
 
 // --------------------------------------------------
