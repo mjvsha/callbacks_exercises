@@ -574,5 +574,113 @@ console.log( 'The most items sold in a single transaction is:', mostItems(allThe
 */
 var sumOfSmallestPurchase;
 
+//get the purchases array
+//loop through the items,grab the lengths and push them into an array
+//sort them, grab the first item in the array
+//match it to the transaction.length of the iterations
+//sum those purchase transactions
 
-console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
+
+purchaseItemsLengthArray = [];
+
+console.log('YOOOOOOOOOOO');
+
+
+//get all the purchases and sort them based on number of transactions
+//return the sorted array of purchse items
+
+
+
+var arrayOfSortedPurchases = function(array) {
+  array.forEach(function(element){
+    purchaseItemsLengthArray.push(element['items'].length)
+  });
+
+      return purchaseItemsLengthArray.sort()
+  };
+
+console.log(arrayOfSortedPurchases(onlyPurchases));
+
+//now we want to get the smallest purchases and push them into an array so that we can sum them after
+
+
+
+
+var arrayofSmallestPurchasePrices = function(array) {
+
+  var smallestPurchasesArray = [];
+
+  array.forEach(function(element){
+    //for each element in the purchases array
+    if (purchaseItemsLengthArray[0] === element['items'].length) {
+      //if the length of the smallest purchase is equal to the length of the element with the smallest purchase
+      for (var i = 0; i < element['items'].length; i++) {
+        //enter this loop so we can pull out the prices of the purchase transactions and push them into array
+
+        smallestPurchasesArray.push(element['items'][i]['price']);
+
+        //once the purchases array length is equal to the value of the number of the smallest number of purchase transactions,
+
+          if (smallestPurchasesArray.length === purchaseItemsLengthArray[0]) {
+            //add the purchase prices within the array to get the sum of the smallest purchases
+            //we sum using a reduce function
+           smallestPurchasesArray.reduce(function(accumulator, current){
+            accumulator += current;
+              console.log(accumulator);
+            return accumulator;
+          });
+          //i realize that returning the accumulator only works here because the array is of length 2
+          //if it was longer, my answer would be incorrect
+          //how would i make a more global solution, for instance in the case that the smallest number of purchase transactions is like 4 ?
+          
+          //reset the array so that we can iterate through the purchases again because there are 2 purcase transactions with equal number of lowest items
+          //i cant believe this worked
+
+          smallestPurchasesArray.length = 0;
+
+
+        }
+
+
+      }
+    }
+  })};
+
+console.log(arrayofSmallestPurchasePrices(onlyPurchases));
+
+
+  // onlyPurchases.forEach(function(element){
+  //   //for each element in the purchases array
+  //   if (purchaseItemsLengthArray[0] === element['items'].length) {
+  //     //if the length of the smallest purchase is equal to the length of the element with the smallest purchase
+  //     for (var i = 0; i < element['items'].length; i++) {
+  //       //enter this loop so we can pull out the prices of the purchase transactions
+  //
+  //       console.log(element['items'][i]['price']);
+  //       smallestPurchasesArray.push(element['items'][i]['price']);
+  //
+  //         //push the prices into an array, and then sum the array
+  //
+  //       //we should
+  //
+  //     }
+
+  //     smallestPurchasesArray.reduce(function(accumulator, current) {
+  //       accumulator += current;
+  //       console.log(accumulator);
+  //         return accumulator;
+  //
+  //     })
+  //   }
+  // });
+
+
+
+// console.log(sumOfSmallestPurchase(onlyPurchases));
+
+
+
+
+
+
+// console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
