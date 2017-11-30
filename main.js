@@ -415,7 +415,7 @@ console.log( 'The "big spenders" are:', bigSpenders );
 //do i need to make a separate for loop to itrate through the items array?
 
 
-var sumSales1 = transactions.filter(function(array){
+var allTheSales = transactions.filter(function(array){
   return (array.type === 'sale');
 });
 
@@ -425,7 +425,7 @@ var sumSales1 = transactions.filter(function(array){
 var sumTheSales = function(array){
   var salesPriceArray = [];
 
-  sumSales1.forEach(function(element){
+  allTheSales.forEach(function(element){
 
     for (var i = 0; i < element['items'].length; i++) {
       salesPriceArray.push((element['items'][i]['price']));
@@ -448,8 +448,9 @@ var sumTheSales = function(array){
 // console.log(lol(sumSales1))
 
 
+var sumOfSales= sumTheSales(allTheSales);
 
-console.log( 'The sum of all sales is: $', sumTheSales(sumSales1));
+console.log( 'The sum of all sales is: $', sumOfSales);
 
 
 // --------------------------------------------------
@@ -501,7 +502,7 @@ var sumPurchases= purchasePriceArray.reduce(function(total, current){
 
 
 
-console.log( 'The sum of all purhcases is:', Math.round(sumPurchases) );
+console.log( 'The sum of all purhcases is:', sumPurchases);
 
 
 // --------------------------------------------------
@@ -517,7 +518,8 @@ console.log( 'The sum of all purhcases is:', Math.round(sumPurchases) );
   HINT(S):
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
-var netProfit;
+
+var netProfit = sumOfSales - sumPurchases;
 
 console.log( 'The net profit is:', netProfit );
 
@@ -528,12 +530,40 @@ console.log( 'The net profit is:', netProfit );
 /*
   Calculate the most items sold as part of single transaction.
 
+  //get all the sales transactions
+  //loop through each transaction and check their length
+  //compare transaction lengths
+  //how would you do that?
+  //if .max == .length
+  //print out the .max number
+
+
+
+
   HINTS:
   - The result of this calculation should be a number (not an array, object, or other data type).
 */
-var mostItems;
 
-console.log( 'The most items sold in a single transaction is:', mostItems );
+
+var mostItems = function(array) {
+  var salesItemsLengthArray = [];
+
+  array.forEach(function(element) {
+        salesItemsLengthArray.push(element.items.length);
+  });
+
+
+      salesItemsLengthArray.sort();
+        return salesItemsLengthArray.pop();
+
+};
+
+
+
+
+
+
+console.log( 'The most items sold in a single transaction is:', mostItems(allTheSales) );
 
 
 // --------------------------------------------------
@@ -543,5 +573,6 @@ console.log( 'The most items sold in a single transaction is:', mostItems );
   Calculate the sum of the 'purchase' with the fewest items.
 */
 var sumOfSmallestPurchase;
+
 
 console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
